@@ -31,44 +31,10 @@ $serial->deviceClose();
 }
 ?>
 
-<!-- ?php
-function initCom($device='COM5') {
-    exec("mode $device baud=115200 parity=n data=8 stop=1 xon=on");
-
-    $comport = @fopen($device, "");
-    if ($comport) {
-        fputs($comport,"\n\n");
-        usleep(300000);
-        $result = fgets($comport);
-    } else {
-        die("error port ".$device);
-    }
-    return $comport;
-}
- 
-function closeCom($handle) {
-    if ($handle!=null) {
-        fclose($handle);
-    }
-}
-
-function sendMicroBit ($forth) {
-    
-    $handle = initCom();
-    fputs($handle,$forth."\n");
-    usleep(300000);
-    $result = utf8_encode(fgets($handle));
-    closecom($handle);
-    return $result;
-}
-
-function helloWorld(){
-    return sendMicroBit("Hello World");
-}
-?> -->
 <form action='index.php' method='POST'>
     <input type='submit' name='action' value='Test'/>
 </form>
+
 <?php
 if (isset($_POST) && !empty($_POST)) {
 if ($_POST['action']=='Test') {
