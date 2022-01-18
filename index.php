@@ -9,25 +9,20 @@
 <article>
 <h1>Test website microbit</h1>
 <?php
-include("./PhpSerial.php");
 
 
 function helloWorld(){
-$serial = new PhpSerial;
 
-$serial->deviceSet("COM5");
+exec("mode COM5 BAUD=115200 PARITY=n data=8 stop=1 xon=off");
 
-$serial->confBaudRate(115200);
-$serial->confParity("none");
-$serial->confCharacterLength(8);
-$serial->confStopBits(1);
-$serial->confFlowControl("none");
+$fp = fopen ("COM5", "w");
+if (!$fp) {
+    fwrite($fp, "Hello World");
+} else {
+    echo "Error:(";
+}
 
-$serial->deviceOpen();
 
-$serial->sendMessage("Hello World!");
-
-$serial->deviceClose();
 }
 ?>
 
