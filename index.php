@@ -16,11 +16,12 @@ function helloWorld(){
 exec("mode COM5 BAUD=115200 PARITY=n data=8 stop=1 xon=off");
 
 $fp = fopen ("COM5", "w");
-if (!$fp) {
-    fwrite($fp, "Hello World");
-} else {
-    echo "Error:(";
-}
+
+$data = "Hellow World";
+
+fwrite($fp, $data);
+
+fclose($fp);
 
 
 }
